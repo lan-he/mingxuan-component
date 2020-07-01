@@ -1,22 +1,17 @@
 <template>
   <div id="app">
-    <!-- <Calendar/> -->
-    <demo/>
+    <router-link to="/home">HOME</router-link>
+    <br>
+    <router-link to="/demo">DEMO</router-link>
+    <router-view></router-view>
   </div>
 </template>
-
 <script>
-// import Calendar from './components/Calendar.vue'
-import demo from './components/demo.vue'
-
 export default {
   name: 'App',
   components: {
-    // Calendar,
-    demo
   }
 }
 </script>
-
 <style>
 </style>
