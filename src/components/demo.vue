@@ -2,13 +2,18 @@
   <div class="box">
     <div class="calender">
       <div class="header">
-        <div @click="changemonth(-1)">《</div>{{Year}}年{{Month}}月<div @click="changemonth(+1)">》</div>
+        <div @click="changemonth(-1)">《</div>
+        <div>
+
+          <input type="number" v-model="Year" @input="keyup();">年<input type="number" v-model="Month" @input="keyup();">月
+        </div>
+        <div @click="changemonth(+1)">》</div>
       </div>
       <div class="weekbox">
         <div class="week" v-for="(item,index) in weekShow" :key="index">{{item}}</div>
       </div>
       <div class="calenderbox">
-        <div class="day" :class="calDay.length==1?calDay[0].index==item?'active':'':calDay.length==2?(calDay[0].index==item||calDay[1].index==item)?'active':(item>calDay[0].index&&item<calDay[1].index)?'actives':'':''" @click="calDayCls(item)" v-for="(item,index) in calenderlist" :key="index">{{item}}</div>
+        <div class="day" :class="classObject(item)" @click="calDayCls(item)" v-for="(item,index) in calenderlist" :key="index">{{item}}</div>
       </div>
     </div>
   </div>
@@ -29,25 +34,66 @@ export default {
   mounted() {
     this.getData()
   },
+  computed: {
+    classObject() {
+      return function(item) {
+        let daylist = this.calDay
+        if (!daylist.length > 0) return
+        if (daylist[0].Month != this.Month) return
+        if (daylist[0].Year != this.Year) return
+        if (daylist.length == 1) {
+          if (daylist[0].index == item) {
+            return 'active'
+          }
+        }
+        if (daylist.length == 2) {
+          if (daylist[0].index == item || daylist[1].index == item) {
+            return 'active'
+          }
+          if (daylist[0].index < daylist[1].index) {
+            if (item > daylist[0].index && item < daylist[1].index) {
+              return 'actives'
+            }
+          }
+          if (daylist[0].index > daylist[1].index) {
+            if (item < daylist[0].index && item > daylist[1].index) {
+              return 'actives'
+            }
+          }
+        }
+      }
+    }
+  },
   methods: {
+    keyup() {
+      this.getData()
+    },
     calDayCls(item) {
+      if (item == '') return
+      if (item == (this.calDay[0] || this.calDay[1])) {
+        this.calDay = []
+        this.calDay.push({
+          time: `${this.Year}-${this.Month}-${item}`,
+          index: item,
+          Month: this.Month,
+          Year: this.Year
+        })
+      }
+      if (this.calDay.length > 0 && this.Month != this.calDay[0].Month) {
+        this.calDay = []
+      }
       if (this.calDay.length == 2) {
         this.calDay.shift()
       }
-      if (this.calDay.length > 0 && this.calDay[0].index < item) {
-        this.calDay.push({
-          time: `${this.Year}-${this.Month}-${item}`,
-          index: item
-        })
-      } else {
-        this.calDay.unshift({
-          time: `${this.Year}-${this.Month}-${item}`,
-          index: item
-        })
-      }
+      this.calDay.push({
+        time: `${this.Year}-${this.Month}-${item}`,
+        index: item,
+        Month: this.Month,
+        Year: this.Year
+      })
+      //   console.log(this.calDay)
     },
     changemonth(num) {
-        this.calDay=[]
       this.Month = this.Month + num
       if (this.Month == 0) {
         this.Year = this.Year - 1
@@ -130,6 +176,15 @@ export default {
 }
 .actives {
   background: rgba(21, 42, 228, 0.3);
-  color: #fff;
+}
+input {
+  width: 55px;
+  background: none;
+  outline: none;
+  border: none;
+  text-align: center;
+}
+input:focus {
+  border: none;
 }
 </style>
