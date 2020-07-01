@@ -4,7 +4,6 @@
       <div class="header">
         <div @click="changemonth(-1)">《</div>
         <div>
-
           <input type="number" v-model="Year" @input="keyup();">年<input type="number" v-model="Month" @input="keyup();">月
         </div>
         <div @click="changemonth(+1)">》</div>
@@ -125,6 +124,15 @@ export default {
 </script>
 
 <style scoped>
+* {
+  moz-user-select: -moz-none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 .box {
   border-top: 1px solid #ccc;
 }
