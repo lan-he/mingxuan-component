@@ -1,15 +1,15 @@
 export default {
-  mode: 'history', //hash/history
+  mode: 'history', // hash/history
   routes: [
-    { path: '/', redirect: '/home' },
+    { path: '/', redirect: '/calendar' },
     {
-      path: '/home',
+      path: '/calendar',
       name: 'calendar',
-      component: (resolve) => require(['@/components/Calendar'], resolve),
+      component: (resolve) => require(['@/page/home'], resolve),
     },{
-      path: '/demo',
-      name: 'demo',
-      component: (resolve) => require(['@/components/demo'], resolve),
+      path: '/mulcalendar',
+      name: 'MulCalendar',
+      component: (resolve) => require(['@/components/MulCalendar'], resolve),
     }
   ],
 }

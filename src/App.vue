@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <router-link to="/home">HOME</router-link>
-    <br>
-    <router-link to="/demo">DEMO</router-link>
+    <div class="router-list">
+      <router-link to="/calendar">calendar</router-link>
+      <router-link to="/mulcalendar">mulcalendar</router-link>
+    </div>
     <router-view></router-view>
   </div>
 </template>
@@ -14,4 +15,8 @@ export default {
 }
 </script>
 <style>
+.router-list {
+  display: flex;
+  justify-content: space-around;
+}
 </style>
