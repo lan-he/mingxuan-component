@@ -3,6 +3,7 @@
     <div class="router-list">
       <router-link to="/calendar">calendar</router-link>
       <router-link to="/mulcalendar">mulcalendar</router-link>
+      <router-link to="/tree">tree</router-link>
     </div>
     <router-view></router-view>
   </div>
