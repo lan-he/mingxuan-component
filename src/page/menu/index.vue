@@ -5,18 +5,21 @@
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-shu"></use>
         </svg>
+        <div class="menu-item-bg" :class="{'menu-item-animation': open==='tree'}"></div>
         <span>Tree</span>
       </div>
       <div class="menu-item" @click="getInto('calendar')">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-ziyuan"></use>
         </svg>
+        <div class="menu-item-bg" :class="{'menu-item-animation': open==='calendar'}"></div>
         <span>日历</span>
       </div>
       <div class="menu-item" @click="getInto('mulcalendar')">
         <svg class="icon" aria-hidden="true">
           <use xlink:href="#icon-rili"></use>
         </svg>
+        <div class="menu-item-bg" :class="{'menu-item-animation': open==='mulcalendar'}"></div>
         <span>多选日历</span>
       </div>
     </div>
@@ -26,12 +29,17 @@
 <script>
 export default {
   data() {
-    return {}
+    return {
+      open: ''
+    }
   },
   components: {},
   methods: {
     getInto(url) {
-      this.$router.push(url)
+      this.open = url
+      setTimeout(()=> {
+        this.$router.push(url)
+      },500)
     }
   }
 }
@@ -41,16 +49,41 @@ export default {
 .menu-list {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  flex-wrap: wrap;
 }
 .menu-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  width: 25%;
 }
 .icon {
   width: 40px;
   height: 40px;
+}
+.menu-item-bg {
+  width: 0;
+  height: 0;
+  background-color: #fff;
+  
+}
+.menu-item-animation {
+  animation: myfirst .6s;
+  animation-fill-mode:forwards;
+  left: 0;
+  top: 0;
+}
+@keyframes myfirst
+{
+  from {
+    width: 0;
+    height: 0;
+  }
+  to {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+  }
 }
 </style>
