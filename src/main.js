@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import Router from 'vue-router'
 import routerConfig from './router'
+import './assets/iconfont/iconfont.js'
 
 Vue.use(Router)
 const router = new Router(

@@ -124,22 +124,12 @@ export default {
 </script>
 
 <style scoped>
-* {
-  moz-user-select: -moz-none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
 .box {
   border-top: 1px solid #ccc;
 }
 .calender {
-  width: 420px;
+  width: 100%;
   margin-top: 20px;
-  /* border: 1px solid pink; */
 }
 .header {
   width: 100%;

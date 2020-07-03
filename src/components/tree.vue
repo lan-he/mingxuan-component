@@ -4,7 +4,7 @@
       <div class="flex">
         <a v-if='item.children' :class="item.open?'transicon':''" @click="open(item)">></a>
         <a v-else></a>
-        <button @click="Select(item)" :class="choice(item)?'active':choice(item)=='1'?actives:''"></button>
+        <button @click="select(item)" :class="choice(item)?'active':choice(item)=='1'?actives:''"></button>
         <div>{{item.label}}</div>
       </div>
       <div class="children" v-if="item.children&&item.open">
@@ -17,18 +17,58 @@
 <script>
 export default {
   name: 'tree',
-  props: {
-    data: {
-      type: Array
-    },
-    Highlight: {
-      type: Boolean
-    }
-  },
   data() {
     return {
-      list: this.data
-      //   Highlights: this.Highlight,
+      list: [
+        {
+          id: 1,
+          label: '一级 1',
+          children: [
+            {
+              id: 4,
+              label: '二级 1-1',
+              children: [
+                {
+                  id: 9,
+                  label: '三级 1-1-1',
+                },
+                {
+                  id: 10,
+                  label: '三级 1-1-2',
+                },
+              ],
+            },
+          ],
+        },
+        {
+          id: 2,
+          label: '一级 2',
+          children: [
+            {
+              id: 5,
+              label: '二级 2-1',
+            },
+            {
+              id: 6,
+              label: '二级 2-2',
+            },
+          ],
+        },
+        {
+          id: 3,
+          label: '一级 3',
+          children: [
+            {
+              id: 7,
+              label: '二级 3-1',
+            },
+            {
+              id: 8,
+              label: '二级 3-2',
+            },
+          ],
+        },
+      ]
     }
   },
   mounted() {},
@@ -41,11 +81,9 @@ export default {
         return false
       }
     },
-    Select(item) {
-      //   console.log(this.$parent.$parent)
+    select(item) {
       this.$set(item, 'select', !item.select)
       this.forLiat(item)
-    //   this.parentList(item)
     },
     parentList(item) {
       console.log(this.$parent.data)
@@ -146,14 +184,5 @@ button {
   top: 50%;
   -webkit-transform: translateY(-1px);
   transform: translateY(-1px);
-}
-* {
-  moz-user-select: -moz-none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 </style>
