@@ -23,5 +23,10 @@ export default {
       name: 'tree',
       component: (resolve) => require(['@/components/tree'], resolve),
     },
+    {
+      path: '/trees',
+      name: 'trees',
+      component: (resolve) => require(['@/page/trees'], resolve),
+    },
   ],
 }
