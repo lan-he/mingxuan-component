@@ -17,61 +17,70 @@
 <script>
 export default {
   name: 'tree',
-  data() {
-    return {
-      list: [
-        {
-          id: 1,
-          label: '一级 1',
-          children: [
-            {
-              id: 4,
-              label: '二级 1-1',
-              children: [
-                {
-                  id: 9,
-                  label: '三级 1-1-1',
-                },
-                {
-                  id: 10,
-                  label: '三级 1-1-2',
-                },
-              ],
-            },
-          ],
-        },
-        {
-          id: 2,
-          label: '一级 2',
-          children: [
-            {
-              id: 5,
-              label: '二级 2-1',
-            },
-            {
-              id: 6,
-              label: '二级 2-2',
-            },
-          ],
-        },
-        {
-          id: 3,
-          label: '一级 3',
-          children: [
-            {
-              id: 7,
-              label: '二级 3-1',
-            },
-            {
-              id: 8,
-              label: '二级 3-2',
-            },
-          ],
-        },
-      ]
+  props: {
+    data: {
+      type: Array,
+      default() {
+        return [
+          {
+            id: 1,
+            label: '一级 1',
+            children: [
+              {
+                id: 4,
+                label: '二级 1-1',
+                children: [
+                  {
+                    id: 9,
+                    label: '三级 1-1-1'
+                  },
+                  {
+                    id: 10,
+                    label: '三级 1-1-2'
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            id: 2,
+            label: '一级 2',
+            children: [
+              {
+                id: 5,
+                label: '二级 2-1'
+              },
+              {
+                id: 6,
+                label: '二级 2-2'
+              }
+            ]
+          },
+          {
+            id: 3,
+            label: '一级 3',
+            children: [
+              {
+                id: 7,
+                label: '二级 3-1'
+              },
+              {
+                id: 8,
+                label: '二级 3-2'
+              }
+            ]
+          }
+        ]
+      }
     }
   },
-  mounted() {},
+  data() {
+    return {
+      list: this.data
+    }
+  },
+  mounted() {
+  },
   computed: {},
   methods: {
     choice(item) {
@@ -83,13 +92,42 @@ export default {
     },
     select(item) {
       this.$set(item, 'select', !item.select)
-      this.forLiat(item)
+        this.forLiat(item)
+        this.parentList(item,item)
     },
-    parentList(item) {
-      console.log(this.$parent.data)
-      console.log(item)
-      let parentdata=this.$parent.data.filter(item => item.select === false)
-      console.log(parentdata)
+    parentList(searchNode = {}, node = { id: 0 }) {
+      const stack = []
+      const dfs = tree => {
+        if (tree.children) {
+          //通过Object.assign创建新对象同时合并旧对象属性
+          stack.push(Object.assign({}, { ...tree }, { children: [] }))
+          //处理父节点
+          //如果找到该节点，就退出递归
+          //此时stack中的内容就是由从根节点出发，到该节点沿途所经过的节点组成。
+          if (tree.id == searchNode.id) {
+            return false
+          }
+          const children = tree.children
+          for (let i = 0; i < children.length; i++) {
+            const child = children[i]
+            const flag = dfs(child)
+            if (!flag) {
+              return false
+            }
+          }
+        } else {
+          stack.push(Object.assign({}, { ...tree }))
+          //处理叶子节点
+          if (tree.id == searchNode.id) {
+            return false
+          }
+        }
+        stack.pop()
+        return true
+      }
+      dfs(node)
+      console.log(stack)
+      return stack
     },
     forLiat(item) {
       if (item.children) {
