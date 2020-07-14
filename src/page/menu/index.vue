@@ -22,6 +22,13 @@
         <div class="menu-item-bg" :class="{'menu-item-animation': open==='mulcalendar'}"></div>
         <span>多选日历</span>
       </div>
+      <div class="menu-item" @click="getInto('trees')">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-forest__easyiconnet"></use>
+        </svg>
+        <div class="menu-item-bg" :class="{'menu-item-animation': open==='trees'}"></div>
+        <span>Trees</span>
+      </div>
     </div>
   </div>
 </template>
