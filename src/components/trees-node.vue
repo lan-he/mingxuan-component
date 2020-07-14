@@ -2,20 +2,21 @@
   <div>
     <div v-if="tree">
       <div v-for="(node, index) in tree" :key="node.id">
-        <div class="conent" @click="nodeClick(node, index)">
+        <div class="conent">
           <div
+            @click="nodeClick(node, index)"
             class="buxuan"
             :class="[
               node.selected === 0
                 ? 'buxuan'
                 : node.selected === 1
-                ? 'bufenxuan'
+                ? 'banxuan'
                 : 'quanxuan',
             ]"
           ></div>
-          {{ node.label }}
+          <span @click="openDore(node, index)">{{ node.label }}</span>
         </div>
-        <div class="children">
+        <div class="children" :class="{open: node.open}">
           <TreesNode :tree="node.children" />
         </div>
       </div>
@@ -28,7 +29,9 @@ import Vue from 'vue'
 export default {
   name: 'TreesNode',
   data() {
-    return {}
+    return {
+      open: false
+    }
   },
   props: {
     tree: {
@@ -85,35 +88,13 @@ export default {
         this.refreshAllParentNodes(node.$parent)
       }
     },
-    refreshAllParentNodess() {
-      // if (node instanceof Vue) {
-      //   var status = null;
-      //   var nullCount = 0;
-      //   var halfCount = 0;
-      //   var fullCount = 0;
-      //   for (index in node.$children) {
-      //     if (typeof node.$children[index].tree.selected === 'undefined') {
-      //       nullCount++;
-      //     } else if (node.$children[index].tree.selected === null) {
-      //       nullCount++;
-      //     } else if (node.$children[index].tree.selected === 'half') {
-      //       halfCount++;
-      //     } else if (node.$children[index].tree.selected === 'full') {
-      //       fullCount++;
-      //     }
-      //   }
-      //   if (fullCount === node.$children.length) {
-      //     status = 'full';
-      //   } else if (nullCount === node.$children.length) {
-      //     status = null;
-      //   } else {
-      //     status = 'half';
-      //   }
-      //   Vue.set(node.tree, 'selected', status);
-      //   // 递归计算父级
-      //   this.refreshAllParentNodes(node.$parent);
-      // }
-    },
+    openDore(node) {
+      if (node.open) {
+        this.$set(node, 'open', 0)
+      } else {
+        this.$set(node, 'open', 1)
+      }
+    }
   },
 }
 </script>
@@ -121,13 +102,23 @@ export default {
 <style scoped>
 .conent {
   display: flex;
+  flex: 14px;
+  align-items: center;
+  user-select:none;
+  cursor: pointer;
 }
 .children {
   margin-left: 20px;
+  display: none;
+}
+.open {
+  display: block;
 }
 .buxuan {
+  margin-right: 5px;
   display: inline-block;
   position: relative;
+  cursor: pointer;
   border: 1px solid #dcdfe6;
   border-radius: 2px;
   box-sizing: border-box;
@@ -136,12 +127,12 @@ export default {
   background-color: #fff;
   z-index: 1;
   transition: border-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46),
-    background-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46);
+  background-color 0.25s cubic-bezier(0.71, -0.46, 0.29, 1.46);
 }
-.bufenxuan {
+.banxuan {
   background-color: #409eff;
 }
-.bufenxuan:before {
+.banxuan:before {
   content: '';
   position: absolute;
   display: block;

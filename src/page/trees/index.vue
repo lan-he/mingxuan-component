@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="trees-box">
     <TreeNode :tree="trees" />
   </div>
 </template>
@@ -28,7 +28,20 @@ export default {
                   label: '三级 1-1-2',
                 },
               ],
-            },
+            },{
+              id: 11,
+              label: '二级 1-2',
+              children: [
+                {
+                  id: 12,
+                  label: '三级 1-2-1',
+                },
+                {
+                  id: 13,
+                  label: '三级 1-2-2',
+                },
+              ],
+            }
           ],
         },
         {
@@ -73,6 +86,9 @@ export default {
       items.map((item) => {
         this.$set(item, 'selected', 0)
         if (item.children) {
+          this.$set(item, 'open', 0)
+        }
+        if (item.children) {
           this.initLiat(item.children)
         }
       })
@@ -82,6 +98,10 @@ export default {
 </script>
 
 <style scoped>
+.trees-box {
+  padding: 20px;
+  box-sizing: border-box;
+}
 .children {
   margin-left: 20px;
 }
