@@ -4,7 +4,7 @@
       <div class="flex">
         <a v-if='item.children' :class="item.open?'transicon':''" @click="open(item)">></a>
         <a v-else></a>
-        <button @click="select(item)" :class="choice(item)?'active':choice(item)=='1'?actives:''"></button>
+        <button @click="select(item)" :class="item.select?'active':item.select=='1'?actives:''"></button>
         <div>{{item.label}}</div>
       </div>
       <div class="children" v-if="item.children&&item.open">
@@ -79,56 +79,15 @@ export default {
       list: this.data
     }
   },
-  mounted() {
-  },
+  mounted() {},
   computed: {},
   methods: {
-    choice(item) {
-      if (item.select) {
-        return true
-      } else {
-        return false
-      }
-    },
     select(item) {
       this.$set(item, 'select', !item.select)
-        this.forLiat(item)
-        this.parentList(item,item)
+      this.forLiat(item)
+      this.parentList(item, item)
     },
-    parentList(searchNode = {}, node = { id: 0 }) {
-      const stack = []
-      const dfs = tree => {
-        if (tree.children) {
-          //通过Object.assign创建新对象同时合并旧对象属性
-          stack.push(Object.assign({}, { ...tree }, { children: [] }))
-          //处理父节点
-          //如果找到该节点，就退出递归
-          //此时stack中的内容就是由从根节点出发，到该节点沿途所经过的节点组成。
-          if (tree.id == searchNode.id) {
-            return false
-          }
-          const children = tree.children
-          for (let i = 0; i < children.length; i++) {
-            const child = children[i]
-            const flag = dfs(child)
-            if (!flag) {
-              return false
-            }
-          }
-        } else {
-          stack.push(Object.assign({}, { ...tree }))
-          //处理叶子节点
-          if (tree.id == searchNode.id) {
-            return false
-          }
-        }
-        stack.pop()
-        return true
-      }
-      dfs(node)
-      console.log(stack)
-      return stack
-    },
+    parentList() {},
     forLiat(item) {
       if (item.children) {
         item.children.forEach(element => {
