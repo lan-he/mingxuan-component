@@ -4,7 +4,7 @@
       <div class="flex">
         <a v-if='item.children' :class="item.open?'transicon':''" @click="open(item)">></a>
         <a v-else></a>
-        <button @click="select(item)" :class="choice(item)?'active':choice(item)=='1'?actives:''"></button>
+        <button @click="select(item)" :class="item.select?'active':item.select=='1'?actives:''"></button>
         <div>{{item.label}}</div>
       </div>
       <div class="children" v-if="item.children&&item.open">
@@ -17,80 +17,77 @@
 <script>
 export default {
   name: 'tree',
+  props: {
+    data: {
+      type: Array,
+      default() {
+        return [
+          {
+            id: 1,
+            label: '一级 1',
+            children: [
+              {
+                id: 4,
+                label: '二级 1-1',
+                children: [
+                  {
+                    id: 9,
+                    label: '三级 1-1-1'
+                  },
+                  {
+                    id: 10,
+                    label: '三级 1-1-2'
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            id: 2,
+            label: '一级 2',
+            children: [
+              {
+                id: 5,
+                label: '二级 2-1'
+              },
+              {
+                id: 6,
+                label: '二级 2-2'
+              }
+            ]
+          },
+          {
+            id: 3,
+            label: '一级 3',
+            children: [
+              {
+                id: 7,
+                label: '二级 3-1'
+              },
+              {
+                id: 8,
+                label: '二级 3-2'
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
   data() {
     return {
-      list: [
-        {
-          id: 1,
-          label: '一级 1',
-          children: [
-            {
-              id: 4,
-              label: '二级 1-1',
-              children: [
-                {
-                  id: 9,
-                  label: '三级 1-1-1',
-                },
-                {
-                  id: 10,
-                  label: '三级 1-1-2',
-                },
-              ],
-            },
-          ],
-        },
-        {
-          id: 2,
-          label: '一级 2',
-          children: [
-            {
-              id: 5,
-              label: '二级 2-1',
-            },
-            {
-              id: 6,
-              label: '二级 2-2',
-            },
-          ],
-        },
-        {
-          id: 3,
-          label: '一级 3',
-          children: [
-            {
-              id: 7,
-              label: '二级 3-1',
-            },
-            {
-              id: 8,
-              label: '二级 3-2',
-            },
-          ],
-        },
-      ]
+      list: this.data
     }
   },
   mounted() {},
   computed: {},
   methods: {
-    choice(item) {
-      if (item.select) {
-        return true
-      } else {
-        return false
-      }
-    },
     select(item) {
       this.$set(item, 'select', !item.select)
       this.forLiat(item)
+      this.parentList(item, item)
     },
-    parentList(item) {
-      console.log(this.$parent.data)
-      console.log(item)
-      let parentdata=this.$parent.data.filter(item => item.select === false)
-      console.log(parentdata)
-    },
+    parentList() {},
     forLiat(item) {
       if (item.children) {
         item.children.forEach(element => {

@@ -149,7 +149,8 @@ export default {
   font-size: 13px;
 }
 .week {
-  width: 60px;
+  /* width: 60px; */
+  width: 14%;
   height: 30px;
   line-height: 30px;
   /* border: 1px solid #999; */
@@ -161,9 +162,10 @@ export default {
   flex-wrap: wrap;
 }
 .day {
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
+  /* width: 60px; */
+  width: 14%;
+  height: 50px;
+  line-height: 50px;
   /* border: 1px solid #999; */
   text-align: center;
   box-sizing: border-box;
