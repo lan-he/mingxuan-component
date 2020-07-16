@@ -3,6 +3,11 @@
     <div v-if="tree">
       <div v-for="(node, index) in tree" :key="node.id">
         <div class="conent">
+          <div class="conent-fill" @click="openDore(node, index)">
+            <svg class="icon" :class="{rotate: node.open,transparent:!node.children}" aria-hidden="true">
+              <use xlink:href="#icon-arrDnR-fill-copy"></use>
+            </svg>
+          </div>
           <div
             @click="nodeClick(node, index)"
             class="buxuan"
@@ -102,17 +107,33 @@ export default {
 <style scoped>
 .conent {
   display: flex;
-  flex: 14px;
   align-items: center;
   user-select:none;
   cursor: pointer;
 }
+.conent-fill {
+  padding: 3px;
+  box-sizing: border-box;
+}
+.conent-fill>.icon {
+   width: 14px;
+   height: 14px;
+   transition: .3s ease-in-out;
+}
+.conent-fill>.transparent {
+  color: transparent;
+}
+.rotate {
+  transform: rotate(90deg);
+}
 .children {
   margin-left: 20px;
-  display: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: .3s ease-in-out;
 }
 .open {
-  display: block;
+  max-height: 200px;
 }
 .buxuan {
   margin-right: 5px;
