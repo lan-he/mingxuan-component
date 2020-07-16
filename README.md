@@ -1,5 +1,13 @@
 # calendar
 
+```js
+<a href="https://vuejs.org/">
+  <img src="https://img.shields.io/badge/vue.js-2.0-green" alt="Vue2.0">
+</a>
+```
+<a href="https://vuejs.org/">
+  <img src="https://img.shields.io/badge/vue.js-2.0-green" alt="Vue2.0">
+</a>
 ## Project setup
 ```
 yarn install
