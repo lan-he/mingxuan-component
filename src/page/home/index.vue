@@ -34,7 +34,7 @@ export default {
   width: 350px;
   height: 760px;
   margin: 0 auto;
-  background: url('../../assets/image/phone-bg.png') no-repeat;
+  background: url('https://img-1256953833.cos.ap-nanjing.myqcloud.com/phone-bg.png') no-repeat;
   background-size: 100% 100%;
   display: flex;
   align-items: center;
@@ -46,7 +46,7 @@ export default {
   width: 326px;
   height: 570px;
   position: relative;
-  background: url('../../assets/image/wallpaper.jpg') no-repeat;
+  background: url('https://img-1256953833.cos.ap-nanjing.myqcloud.com/wallpaper.jpg') no-repeat;
   background-size: 100% 100%;
 }
 .home-key {
