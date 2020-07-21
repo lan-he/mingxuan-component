@@ -39,7 +39,6 @@ export default {
     parentList(item) {
       if (!item.data) return
       if (item.$children) {
-        console.log(item)
         item.$children.map((element, index) => {
           let a = 0
           let b = 0
@@ -60,7 +59,6 @@ export default {
             this.$set(item.data[index], 'select', '2')
           }
         })
-        console.log(item, '0000')
         this.parentList(item.$parent)
       }
     },
