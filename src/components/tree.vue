@@ -6,7 +6,7 @@
         <button @click="select(item)" :class="item.select=='1'?'active':item.select=='2'?'actives':''"></button>
         <div>{{item.label}}</div>
       </div>
-      <div class="children" v-if="item.children&&item.open">
+      <div class="children" :class="(item.children&&item.open)?'':'childrenhide'">
         <tree :data='item.children' />
       </div>
     </div>
@@ -38,8 +38,8 @@ export default {
     },
     parentList(item) {
       if (!item.data) return
-      // this.$set(item, 'select', '2')
       if (item.$children) {
+        console.log(item)
         item.$children.map((element, index) => {
           let a = 0
           let b = 0
@@ -60,7 +60,7 @@ export default {
             this.$set(item.data[index], 'select', '2')
           }
         })
-        // console.log(item, '0000')
+        console.log(item, '0000')
         this.parentList(item.$parent)
       }
     },
@@ -84,6 +84,9 @@ export default {
 <style scoped>
 .children {
   padding-left: 15px;
+}
+.childrenhide {
+  display: none;
 }
 .flex {
   display: flex;
