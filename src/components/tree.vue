@@ -43,20 +43,22 @@ export default {
           let a = 0
           let b = 0
           //   let state = ''
-          element.data.map(elements => {
-            if (elements.select == '1') {
-              a++
+          if (element.data) {
+            element.data.map(elements => {
+              if (elements.select == '1') {
+                a++
+              }
+              if (elements.select != '1' && elements.select != '2') {
+                b++
+              }
+            })
+            if (element.data.length == a) {
+              this.$set(item.data[index], 'select', '1')
+            } else if (element.data.length == b) {
+              this.$set(item.data[index], 'select', '0')
+            } else {
+              this.$set(item.data[index], 'select', '2')
             }
-            if (elements.select != '1' && elements.select != '2') {
-              b++
-            }
-          })
-          if (element.data.length == a) {
-            this.$set(item.data[index], 'select', '1')
-          } else if (element.data.length == b) {
-            this.$set(item.data[index], 'select', '0')
-          } else {
-            this.$set(item.data[index], 'select', '2')
           }
         })
         this.parentList(item.$parent)
