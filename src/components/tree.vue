@@ -6,7 +6,7 @@
         <button @click="select(item)" :class="item.select=='1'?'active':item.select=='2'?'actives':''"></button>
         <div>{{item.label}}</div>
       </div>
-      <div class="children" :class="(item.children&&item.open)?'':'childrenhide'">
+      <div class="children" v-show="item.children&&item.open">
         <tree :data='item.children' />
       </div>
     </div>
@@ -42,7 +42,6 @@ export default {
         item.$children.map((element, index) => {
           let a = 0
           let b = 0
-          //   let state = ''
           if (element.data) {
             element.data.map(elements => {
               if (elements.select == '1') {
