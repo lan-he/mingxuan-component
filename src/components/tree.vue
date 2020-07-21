@@ -1,10 +1,9 @@
 <template>
   <div>
-    <div v-for="item in list" :key="item.id">
+    <div v-for="item in data" :key="item.id">
       <div class="flex">
-        <a v-if='item.children' :class="item.open?'transicon':''" @click="open(item)">></a>
-        <a v-else></a>
-        <button @click="select(item)" :class="item.select?'active':item.select=='1'?actives:''"></button>
+        <a v-if='item.children' :class="item.open?'transicon':''" @click="open(item)"></a>
+        <button @click="select(item)" :class="item.select=='1'?'active':item.select=='2'?'actives':''"></button>
         <div>{{item.label}}</div>
       </div>
       <div class="children" v-if="item.children&&item.open">
@@ -19,75 +18,52 @@ export default {
   name: 'tree',
   props: {
     data: {
-      type: Array,
-      default() {
-        return [
-          {
-            id: 1,
-            label: '一级 1',
-            children: [
-              {
-                id: 4,
-                label: '二级 1-1',
-                children: [
-                  {
-                    id: 9,
-                    label: '三级 1-1-1'
-                  },
-                  {
-                    id: 10,
-                    label: '三级 1-1-2'
-                  }
-                ]
-              }
-            ]
-          },
-          {
-            id: 2,
-            label: '一级 2',
-            children: [
-              {
-                id: 5,
-                label: '二级 2-1'
-              },
-              {
-                id: 6,
-                label: '二级 2-2'
-              }
-            ]
-          },
-          {
-            id: 3,
-            label: '一级 3',
-            children: [
-              {
-                id: 7,
-                label: '二级 3-1'
-              },
-              {
-                id: 8,
-                label: '二级 3-2'
-              }
-            ]
-          }
-        ]
-      }
+      type: Array
     }
   },
   data() {
-    return {
-      list: this.data
-    }
+    return {}
   },
   mounted() {},
   computed: {},
   methods: {
     select(item) {
-      this.$set(item, 'select', !item.select)
+      if (item.select == '1' || item.select == '2') {
+        this.$set(item, 'select', '0')
+      } else {
+        this.$set(item, 'select', '1')
+      }
       this.forLiat(item)
-      this.parentList(item, item)
+      this.parentList(this.$parent)
     },
-    parentList() {},
+    parentList(item) {
+      if (!item.data) return
+      // this.$set(item, 'select', '2')
+      if (item.$children) {
+        item.$children.map((element, index) => {
+          let a = 0
+          let b = 0
+          //   let state = ''
+          element.data.map(elements => {
+            if (elements.select == '1') {
+              a++
+            }
+            if (elements.select != '1' && elements.select != '2') {
+              b++
+            }
+          })
+          if (element.data.length == a) {
+            this.$set(item.data[index], 'select', '1')
+          } else if (element.data.length == b) {
+            this.$set(item.data[index], 'select', '0')
+          } else {
+            this.$set(item.data[index], 'select', '2')
+          }
+        })
+        // console.log(item, '0000')
+        this.parentList(item.$parent)
+      }
+    },
     forLiat(item) {
       if (item.children) {
         item.children.forEach(element => {
@@ -112,11 +88,20 @@ export default {
 .flex {
   display: flex;
   align-items: center;
+  padding-left: 20px;
+  position: relative;
+  margin: 5px 0;
 }
 .flex > a {
-  width: 12px;
-  font-size: 20px;
-  margin: 0 5px;
+  position: absolute;
+  left: 0px;
+  width: 0;
+  height: 0;
+  border-left: 6px solid black;
+  border-top: 6px solid transparent;
+  border-bottom: 6px solid transparent;
+  margin-left: 10px;
+  margin-right: 10px;
   transform: rotate(0deg);
   transition: transform 0.3s ease-in-out;
 }

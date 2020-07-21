@@ -21,7 +21,7 @@ export default {
     {
       path: '/tree',
       name: 'tree',
-      component: (resolve) => require(['@/components/tree'], resolve),
+      component: (resolve) => require(['@/page/tree'], resolve),
     },
     {
       path: '/trees',
