@@ -29,6 +29,13 @@
         <div class="menu-item-bg" :class="{'menu-item-animation': open==='trees'}"></div>
         <span>Trees</span>
       </div>
+      <div class="menu-item" @click="getInto('sku')">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-sku"></use>
+        </svg>
+        <div class="menu-item-bg" :class="{'menu-item-animation': open==='sku'}"></div>
+        <span>sku</span>
+      </div>
     </div>
   </div>
 </template>
