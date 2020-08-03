@@ -1,238 +1,270 @@
 <template>
-  <!-- <div class="sku">
-    <div v-for="(key,index) in keys">
-      <div class="tabContent">
-        {{key.name}}:
-        <input type="button" @click="itemSelect(index,i,item)" v-for="(item, i) in key.items" :class="{block: !item.block, active: item.active, 'sku':true}" v-model="item.value" />
-      </div>
-    </div>
-  </div> -->
   <div class="spu-selectbox">
-    <p>{{simulatedDATA.title}}</p>
+    <!-- <p>{{simulatedDATA.title}}</p> -->
     <div>
       <!-- <a v-for="(item,index) in simulatedDATA.specifications" :key="index"> {{item.name}} ：{{select[index]}}</a> -->
-      规格型号：<a v-for="(item,index) in select" :key="index"> {{item}}</a>
+      规格型号：<a v-for="(item,index) in select" :key="index"> {{item.label}}</a>
     </div>
-    <div v-for="(item,index) in simulatedDATA.specifications" :key="index" class="listbox">
+    <div v-for="(item,index) in typelist" :key="index" class="listbox">
       <div>{{item.name}}:</div>
       <div class="commodity">
-        <a v-for="(items,indexs) in item.item" :key="indexs" :class="['content',{'active':items.Highlight},{'disable':items.block==false}]" @click="selectTag(index,indexs,items)">{{items.label}}</a>
+        <a v-for="(items,indexs) in item.item" :key="indexs" :class="['content',{'active':items.active},{'disable':items.disabled}]" @click="selectTag(index,indexs,items)">{{items.label}}</a>
       </div>
     </div>
   </div>
 </template>
 <script>
+let simulatedDATA = {
+  title: '手机',
+  difference: [
+    //   {
+    //     id: '1',
+    //     price: '200.00',
+    //     stock: '59',
+    //     difference: '128G,100,白色'
+    //   },
+    //   {
+    //     id: '2',
+    //     price: '200.00',
+    //     stock: '19',
+    //     difference: '128G,100,蓝色'
+    //   },
+    //   {
+    //     id: '3',
+    //     price: '200.00',
+    //     stock: '0',
+    //     difference: '128G,100,黑色'
+    //   },
+    // {
+    //   id: '4',
+    //   price: '259.00',
+    //   stock: '0',
+    //   difference: '128G,200,白色'
+    // },
+    {
+      id: '5',
+      price: '200.00',
+      stock: '19',
+      difference: '128G,200,蓝色'
+    },
+    {
+      id: '6',
+      price: '200.00',
+      stock: '19',
+      difference: '128G,200,黑色'
+    },
+    // {
+    //   id: '7',
+    //   price: '259.00',
+    //   stock: '19',
+    //   difference: '256G,100,白色'
+    // },
+    {
+      id: '8',
+      price: '590.00',
+      stock: '0',
+      difference: '256G,100,蓝色'
+    },
+    {
+      id: '9',
+      price: '200.00',
+      stock: '19',
+      difference: '256G,100,黑色'
+    },
+    // {
+    //   id: '10',
+    //   price: '359.00',
+    //   stock: '0',
+    //   difference: '256G,200,白色'
+    // },
+    {
+      id: '11',
+      price: '300.00',
+      stock: '19',
+      difference: '256G,200,蓝色'
+    },
+    {
+      id: '12',
+      price: '399.00',
+      stock: '19',
+      difference: '256G,200,黑色'
+    }
+  ],
+  specifications: [
+    {
+      //这里是要被渲染字段
+      name: '型号',
+      item: [
+        {
+          label: '128G'
+        },
+        {
+          label: '256G'
+        }
+      ]
+    },
+    {
+      name: '尺寸',
+      item: [
+        {
+          label: '100'
+        },
+        {
+          label: '200'
+        }
+      ]
+    },
+    {
+      name: '颜色',
+      item: [
+        {
+          label: '白色'
+        },
+        {
+          label: '蓝色'
+        },
+        {
+          label: '黑色'
+        }
+      ]
+    }
+  ]
+}
 export default {
   name: 'sku',
   data() {
     return {
-      simulatedDATA: {
-        title: '手机',
-        difference: [
-          //   {
-          //     id: '1',
-          //     price: '200.00',
-          //     stock: '59',
-          //     difference: '128G,100,白色'
-          //   },
-          {
-            id: '2',
-            price: '200.00',
-            stock: '19',
-            difference: '128G,100,蓝色'
-          },
-          {
-            id: '3',
-            price: '200.00',
-            stock: '0',
-            difference: '128G,100,黑色'
-          },
-          {
-            id: '4',
-            price: '259.00',
-            stock: '0',
-            difference: '128G,200,白色'
-          },
-          {
-            id: '5',
-            price: '200.00',
-            stock: '19',
-            difference: '128G,200,蓝色'
-          },
-          {
-            id: '6',
-            price: '200.00',
-            stock: '19',
-            difference: '128G,200,黑色'
-          },
-          {
-            id: '7',
-            price: '259.00',
-            stock: '19',
-            difference: '256G,100,白色'
-          },
-          {
-            id: '8',
-            price: '590.00',
-            stock: '0',
-            difference: '256G,100,蓝色'
-          },
-          {
-            id: '9',
-            price: '200.00',
-            stock: '19',
-            difference: '256G,100,黑色'
-          },
-          {
-            id: '10',
-            price: '359.00',
-            stock: '0',
-            difference: '256G,200,白色'
-          },
-          {
-            id: '11',
-            price: '300.00',
-            stock: '19',
-            difference: '256G,200,蓝色'
-          },
-          {
-            id: '12',
-            price: '399.00',
-            stock: '19',
-            difference: '256G,200,黑色'
-          }
-        ],
-        specifications: [
-          {
-            //这里是要被渲染字段
-            name: '型号',
-            item: [
-              {
-                label: '128G'
-              },
-              {
-                label: '256G'
-              }
-            ]
-          },
-          {
-            name: '尺寸',
-            item: [
-              {
-                label: '100'
-              },
-              {
-                label: '200'
-              }
-            ]
-          },
-          {
-            name: '颜色',
-            item: [
-              {
-                label: '白色'
-              },
-              {
-                label: '蓝色'
-              },
-              {
-                label: '黑色'
-              }
-            ]
-          }
-        ]
-      },
-      select: []
+      typelist: [], //渲染列表
+      SkuList: [], //库存列表
+      select: [] //已选列表
     }
   },
   components: {},
   mounted() {
-    this.start_list()
-    // this.pros_in_skulist()
+    // this.start_list()
+    this.skulist() //库存
+    this.get_skulist() //渲染列表
+    this.init()
   },
   methods: {
-    start_list() {
-      this.simulatedDATA.specifications.forEach(item => {
-        // console.log(item)
-
-        // for (let key in item) {
-        item.item.forEach(i => {
-          if (this.pros_in_skulist().includes(i['label'])) {
-            this.$set(i, 'block', true)
-            // i.block = true
+    init() {
+      this.typelist.forEach(a => {
+        a.item.forEach(b => {
+          if (!this.SkuList.flat(Infinity).includes(b.label)) {
+            b.disabled = true
           } else {
-            this.$set(i, 'block', false)
-            // i.block = false
+            b.disabled = false
           }
         })
-        // }
       })
     },
-    pros_in_skulist(arr = this.simulatedDATA.difference) {
+    get_skulist() {
+      // 提出渲染列表
+      simulatedDATA.specifications.forEach(res => {
+        res.item.forEach(i => {
+          i.disabled = false
+          i.active = false
+        })
+      })
+      this.typelist = simulatedDATA.specifications
+    },
+    skulist() {
+      // 库存列表
+      let arr = simulatedDATA.difference
       let pro_all_in = []
       arr.forEach(item => {
-        pro_all_in = pro_all_in.concat(item['difference'].split(','))
+        pro_all_in.push(item['difference'].split(','))
       })
-      return pro_all_in
+      this.SkuList = pro_all_in
     },
-    // skulist(arr = this.simulatedDATA.difference) {
-    //   let pro_all_in = []
-    //   arr.forEach(item => {
-    //     pro_all_in.push(item['difference'].split(','))
-    //   })
-    //   return pro_all_in
-    // },
-    selectTag(index, tagindex, item) {
-      let data = this.simulatedDATA.specifications
-      let difflist = this.simulatedDATA.difference
-      if (data[index]['item'][tagindex].block == false) return
-      if (!data[index]['item'][tagindex].Highlight) {
-        this.select[index] = item.label //当前选中的放进数组
-        this.$set(data[index]['item'][tagindex], 'Highlight', true) //选中改变颜色
-      } else {
-        this.select[index] = '' //当前选中的放进数组
-        this.$set(data[index]['item'][tagindex], 'Highlight', false) //选中改变颜色
+    optionsHandle(sel, data) {
+      let arr = []
+      sel.map(item => {
+        arr.push(item.label)
+      })
+      this.SkuList.map(i => {
+        //   console.log(i, arr,this.isContained(i, arr),this.typelist[data.index]['item'][data.tagindex].label)
+        if (this.isContained(i, arr)) {
+          this.typelist[data.index]['item'][data.tagindex].disabled = false
+        }
+      })
+    },
+    isContained(aa, bb) {
+      // 全部的 ，  选中的
+      //判断aa数组是否 全 包含bb数组
+      //   console.log(aa,bb)
+      if (
+        !(aa instanceof Array) ||
+        !(bb instanceof Array) ||
+        aa.length < bb.length
+      ) {
+        return false
       }
-      data[index]['item'].forEach(element => {
-        //除刚刚选中的其他的都取消高亮
-        if (element.label != item.label) {
-          element.Highlight = false
+      let aaStr = aa.toString()
+      for (var i = 0; i < bb.length; i++) {
+        // console.log(aaStr, '-----', bb[i], aaStr.indexOf(bb[i]) < 0)
+        if (aaStr.indexOf(bb[i]) < 0) {
+          //小于 0 没有
+          return false
         }
+      }
+      return true
+    },
+    filter(arr = []) {
+      return arr.filter(function(s) {
+        return s && s.trim()
       })
-
-      let arr = [] //筛选出包含选中数据的组合
-      difflist.forEach(v => {
-        //   v['difference'].split(',').includes(vm)
-        if (
-          this.select.every(function(vm) {
-            if (vm) {
-              return v['difference'].split(',').includes(vm)
+    },
+    selectTag(index, tagindex, item) {
+      if (item.disabled == true) return //不可选直接跳过
+      let select = this.select //已选列表
+      let typelist = this.typelist //渲染列表
+      //   let SkuList = this.SkuList //库存列表
+      if (item.active) {
+        typelist[index]['item'][tagindex].active = false
+        select.forEach((a, i) => {
+          if (a.index == index) {
+            select.splice(i, 1)
+          }
+        })
+      } else {
+        typelist[index]['item'].forEach(a => {
+          a.active = false
+        })
+        typelist[index]['item'][tagindex].active = true
+        select.forEach((a, i) => {
+          if (a.index == index) {
+            select.splice(i, 1)
+          }
+        })
+        select.push({ label: item.label, index, tagindex })
+      }
+      if (select.length == 0) {
+        //没选就重新渲染下
+        this.init()
+      } else {
+        typelist.forEach((el, idx) => {
+          el.item.forEach((pro, index) => {
+            if (!pro.active) {
+              pro.disabled = true
+            }
+            let data = {
+              label: pro.label,
+              index: idx,
+              tagindex: index
+            }
+            if (select[idx] != '' && select[idx] != undefined) {
+              let sel = select.slice()
+              this.optionsHandle(sel, data)
             } else {
-              return true
+              let sel = select.slice()
+              sel.push(data)
+              this.optionsHandle(sel, data)
             }
           })
-        ) {
-          arr.push(v)
-        }
-      })
-      let lastArr = this.pros_in_skulist(arr)
-      //   console.log(lastArr, 'lastArr')
-      //   !this.select[x] ?? false
-      data.forEach((vm, x) => {
-        if (index != x) {
-          vm.item.forEach((k, j) => {
-            if (lastArr.includes(k['label'])) {
-              data[x]['item'][j].block = true
-            } else {
-              data[x]['item'][j].block = false
-            }
-          })
-        } else if (this.select.filter(res => res != '').length <= 1) {
-          // 选中列表只有一个的时候   初始化 所以的都可以选
-          //   console.log('只有一个')
-          this.start_list()
-        }
-      })
+        })
+      }
+      // this.$forceUpdate()
     }
   }
 }
