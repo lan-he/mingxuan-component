@@ -183,7 +183,12 @@ export default {
         arr.push(item.label)
       })
       this.SkuList.map(i => {
-        //   console.log(i, arr,this.isContained(i, arr),this.typelist[data.index]['item'][data.tagindex].label)
+        // console.log(
+        //   i,
+        //   arr,
+        //   this.isContained(i, arr),
+        //   this.typelist[data.index]['item'][data.tagindex].label
+        // )
         if (this.isContained(i, arr)) {
           this.typelist[data.index]['item'][data.tagindex].disabled = false
         }
@@ -239,6 +244,10 @@ export default {
         })
         select.push({ label: item.label, index, tagindex })
       }
+      let x_selected = []
+      select.forEach(item => {
+        x_selected.push(item.index)
+      })
       if (select.length == 0) {
         //没选就重新渲染下
         this.init()
@@ -253,8 +262,12 @@ export default {
               index: idx,
               tagindex: index
             }
-            if (select[idx] != '' && select[idx] != undefined) {
+            // console.log(x_selected,idx)
+            // console.log(x_selected.indexOf(idx))
+            if (x_selected.indexOf(idx) > -1) {
               let sel = select.slice()
+              let c = x_selected.indexOf(idx)
+              sel.splice(c, 1, data)
               this.optionsHandle(sel, data)
             } else {
               let sel = select.slice()
