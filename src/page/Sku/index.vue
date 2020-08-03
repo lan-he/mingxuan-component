@@ -244,6 +244,7 @@ export default {
         })
         select.push({ label: item.label, index, tagindex })
       }
+      select.sort(function(a, b){return a.index - b.index});
       let x_selected = []
       select.forEach(item => {
         x_selected.push(item.index)
