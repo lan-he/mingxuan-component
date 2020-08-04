@@ -17,30 +17,30 @@
 let simulatedDATA = {
   title: '手机',
   difference: [
-    //   {
-    //     id: '1',
-    //     price: '200.00',
-    //     stock: '59',
-    //     difference: '128G,100,白色'
-    //   },
-    //   {
-    //     id: '2',
-    //     price: '200.00',
-    //     stock: '19',
-    //     difference: '128G,100,蓝色'
-    //   },
-    //   {
-    //     id: '3',
-    //     price: '200.00',
-    //     stock: '0',
-    //     difference: '128G,100,黑色'
-    //   },
-    // {
-    //   id: '4',
-    //   price: '259.00',
-    //   stock: '0',
-    //   difference: '128G,200,白色'
-    // },
+    {
+      id: '1',
+      price: '200.00',
+      stock: '59',
+      difference: '128G,100,白色'
+    },
+    {
+      id: '2',
+      price: '200.00',
+      stock: '19',
+      difference: '128G,100,蓝色'
+    },
+    {
+      id: '3',
+      price: '200.00',
+      stock: '0',
+      difference: '128G,100,黑色'
+    },
+    {
+      id: '4',
+      price: '259.00',
+      stock: '0',
+      difference: '128G,200,白色'
+    },
     {
       id: '5',
       price: '200.00',
@@ -53,12 +53,12 @@ let simulatedDATA = {
       stock: '19',
       difference: '128G,200,黑色'
     },
-    // {
-    //   id: '7',
-    //   price: '259.00',
-    //   stock: '19',
-    //   difference: '256G,100,白色'
-    // },
+    {
+      id: '7',
+      price: '259.00',
+      stock: '19',
+      difference: '256G,100,白色'
+    },
     {
       id: '8',
       price: '590.00',
@@ -71,12 +71,12 @@ let simulatedDATA = {
       stock: '19',
       difference: '256G,100,黑色'
     },
-    // {
-    //   id: '10',
-    //   price: '359.00',
-    //   stock: '0',
-    //   difference: '256G,200,白色'
-    // },
+    {
+      id: '10',
+      price: '359.00',
+      stock: '0',
+      difference: '256G,200,白色'
+    },
     {
       id: '11',
       price: '300.00',
@@ -173,7 +173,9 @@ export default {
       let arr = simulatedDATA.difference
       let pro_all_in = []
       arr.forEach(item => {
-        pro_all_in.push(item['difference'].split(','))
+        if (item.stock != '0') {
+          pro_all_in.push(item['difference'].split(','))
+        }
       })
       this.SkuList = pro_all_in
     },
@@ -244,7 +246,9 @@ export default {
         })
         select.push({ label: item.label, index, tagindex })
       }
-      select.sort(function(a, b){return a.index - b.index});
+      select.sort(function(a, b) {
+        return a.index - b.index
+      })
       let x_selected = []
       select.forEach(item => {
         x_selected.push(item.index)
