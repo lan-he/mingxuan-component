@@ -288,15 +288,6 @@ export default {
 }
 </script>
 <style>
-* {
-  moz-user-select: -moz-none;
-  -moz-user-select: none;
-  -o-user-select: none;
-  -khtml-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
 .spu-selectbox {
   padding: 10px;
   color: #333;
