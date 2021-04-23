@@ -22,7 +22,7 @@
           <span @click="openDore(node, index)">{{ node.label }}</span>
         </div>
         <div class="children" :class="{open: node.open}">
-          <TreesNode :tree="node.children" />
+          <TreesNode :tree="node.children" :layers="layers+1" />
         </div>
       </div>
     </div>
@@ -42,8 +42,14 @@ export default {
     tree: {
       type: Array,
     },
+    layers: {
+      type: Number,
+    },
   },
   computed: {},
+  mounted() {
+    console.log('当前层=====================>',this.tree,'层数=====================>',this.layers)
+  },
   methods: {
     nodeClick(node, index) {
       if (node.selected === 2 || node.selected === 1) {

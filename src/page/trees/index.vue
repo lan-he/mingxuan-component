@@ -1,6 +1,6 @@
 <template>
   <div class="trees-box">
-    <TreeNode :tree="trees" />
+    <TreeNode :tree="trees" :layers="0" />
   </div>
 </template>
 
