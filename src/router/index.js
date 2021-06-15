@@ -33,5 +33,10 @@ export default {
 			name: 'sku',
 			component: (resolve) => require(['@/page/Sku'], resolve),
 		},
+		{
+			path: '/MouseClick',
+			name: 'MouseClick',
+			component: (resolve) => require(['@/page/MouseClick'], resolve),
+		},
 	],
 }

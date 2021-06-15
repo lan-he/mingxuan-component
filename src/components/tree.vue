@@ -8,6 +8,7 @@
       </div>
       <div class="children" v-show="item.children&&item.open">
         <tree :data='item.children' />
+        
       </div>
     </div>
   </div>
@@ -51,6 +52,7 @@ export default {
                 b++
               }
             })
+            console.log(item,item.data,item.$children,index)
             if (element.data.length == a) {
               this.$set(item.data[index], 'select', '1')
             } else if (element.data.length == b) {

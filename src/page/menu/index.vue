@@ -36,6 +36,13 @@
         <div class="menu-item-bg" :class="{'menu-item-animation': open==='sku'}"></div>
         <span>sku</span>
       </div>
+      <div class="menu-item" @click="getInto('MouseClick')">
+        <svg class="icon" aria-hidden="true">
+          <use xlink:href="#icon-sku"></use>
+        </svg>
+        <div class="menu-item-bg" :class="{'menu-item-animation': open==='MouseClick'}"></div>
+        <span>水波纹</span>
+      </div>
     </div>
   </div>
 </template>
@@ -44,18 +51,18 @@
 export default {
   data() {
     return {
-      open: ''
+      open: '',
     }
   },
   components: {},
   methods: {
     getInto(url) {
       this.open = url
-      setTimeout(()=> {
+      setTimeout(() => {
         this.$router.push(url)
-      },500)
-    }
-  }
+      }, 500)
+    },
+  },
 }
 </script>
 
@@ -80,16 +87,14 @@ export default {
   width: 0;
   height: 0;
   background-color: #fff;
-  
 }
 .menu-item-animation {
-  animation: myfirst .6s;
-  animation-fill-mode:forwards;
+  animation: myfirst 0.6s;
+  animation-fill-mode: forwards;
   left: 0;
   top: 0;
 }
-@keyframes myfirst
-{
+@keyframes myfirst {
   from {
     width: 0;
     height: 0;
