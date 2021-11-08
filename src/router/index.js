@@ -29,14 +29,9 @@ export default {
 			component: (resolve) => require(['@/page/trees'], resolve),
 		},
 		{
-			path: '/sku',
-			name: 'sku',
-			component: (resolve) => require(['@/page/Sku'], resolve),
-		},
-		{
-			path: '/MouseClick',
-			name: 'MouseClick',
-			component: (resolve) => require(['@/page/MouseClick'], resolve),
-		},
+			path: '/skus',
+			name: 'skus',
+			component: (resolve) => require(['@/page/skus'], resolve),
+		}
 	],
 }
