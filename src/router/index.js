@@ -1,37 +1,26 @@
-export default {
-	mode: 'history', // hash/history
-	routes: [
-		{ path: '/', redirect: '/menu' },
-		{
-			path: '/menu',
-			name: 'menu',
-			component: (resolve) => require(['@/page/menu'], resolve),
-		},
-		{
-			path: '/calendar',
-			name: 'calendar',
-			component: (resolve) => require(['@/components/calendar'], resolve),
-		},
-		{
-			path: '/mulcalendar',
-			name: 'mulcalendar',
-			component: (resolve) =>
-				require(['@/components/calendar-multiple'], resolve),
-		},
-		{
-			path: '/tree',
-			name: 'tree',
-			component: (resolve) => require(['@/page/tree'], resolve),
-		},
-		{
-			path: '/trees',
-			name: 'trees',
-			component: (resolve) => require(['@/page/trees'], resolve),
-		},
-		{
-			path: '/skus',
-			name: 'skus',
-			component: (resolve) => require(['@/page/skus'], resolve),
-		}
-	],
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import mobileRouter from '@/router/mobile-router.js'
+import pcRouter from '@/router/pc-router.js'
+
+Vue.use(VueRouter)
+
+const routes = [
+    {
+        path: '/',
+        redirect: '/mobile',
+    },
+    ...mobileRouter,
+    ...pcRouter,
+]
+
+const router = new VueRouter({
+    mode: 'history',
+    base: process.env.BASE_URL,
+    routes,
+})
+const VueRouterPush = VueRouter.prototype.push
+VueRouter.prototype.push = function push(to) {
+    return VueRouterPush.call(this, to).catch((err) => err)
 }
+export default router

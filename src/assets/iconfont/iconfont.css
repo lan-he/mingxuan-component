@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "iconfont"; /* Project id 1921710 */
+  src: url('iconfont.woff2?t=1653839682713') format('woff2'),
+       url('iconfont.woff?t=1653839682713') format('woff'),
+       url('iconfont.ttf?t=1653839682713') format('truetype');
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-food-strawberry:before {
+  content: "\e605";
+}
+
+.icon-github:before {
+  content: "\e673";
+}
+
+.icon-back:before {
+  content: "\e679";
+}
+
+.icon-right:before {
+  content: "\e6a3";
+}
+

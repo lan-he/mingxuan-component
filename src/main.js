@@ -1,16 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
-import Router from 'vue-router'
-import routerConfig from './router'
-import './assets/iconfont/iconfont.js'
+import router from './router'
+import store from './store'
+import '@/assets/iconfont/iconfont.js'
+import '@/assets/iconfont/iconfont.css'
 
-Vue.use(Router)
-const router = new Router(
-  routerConfig
-)
 Vue.config.productionTip = false
 
 new Vue({
-  render: h => h(App),
-  router
+    router,
+    store,
+    render: (h) => h(App),
 }).$mount('#app')
