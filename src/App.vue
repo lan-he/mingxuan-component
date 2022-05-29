@@ -12,7 +12,6 @@ export default {
 }
 </script>
 <style>
-@import '//at.alicdn.com/t/font_1921710_h8p392rolth.css';
 * {
     margin: 0;
     padding: 0;
