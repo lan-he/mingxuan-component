@@ -139,6 +139,7 @@ export default {
     },
     components: {},
     mounted() {
+        console.log(this.$route)
         this.drag()
     },
     methods: {
@@ -154,7 +155,7 @@ export default {
             // var disW = 0 //拖拽前div的宽
             var disH = 0 // 拖拽前div的高
             //3. 给小div加点击事件
-            oDragIcon.onmousedown = function (ev) {
+            oDragIcon.onmousedown = function(ev) {
                 var evt = ev || window.event
                 disX = evt.clientX // 获取鼠标按下时光标x的值
                 var offsetLeft = oDragIcon.offsetLeft - disX // 获取点击差值
@@ -168,7 +169,7 @@ export default {
                 // disH = oPanel.offsetHeight // 获取拖拽前div的高
                 // disW = 100 // 获取拖拽前div的宽
                 disH = 100 // 获取拖拽前div的高
-                document.onmousemove = function (ev) {
+                document.onmousemove = function(ev) {
                     var evt = ev || window.event
                     //拖拽时为了对宽和高 限制一下范围，定义两个变量
                     var W = evt.clientX - disX
@@ -182,9 +183,8 @@ export default {
                     if (oPanelWidthLists[0] <= 20) {
                         console.log(oPanelWidthLists[0], 'oPanelWidthLists[0]oPanelWidthLists[0]oPanelWidthLists[0]')
                     }
-                    oPanel.style.gridTemplateColumns = `${oPanelWidthList[0] + W / 2}px ${
-                        oPanelWidthList[1] + W / 2
-                    }px ${oPanelWidthList[2] - W / 2}px ${oPanelWidthList[3] - W / 2}px 100px 100px` // 拖拽后物体的宽
+                    oPanel.style.gridTemplateColumns = `${oPanelWidthList[0] + W / 2}px ${oPanelWidthList[1] +
+                        W / 2}px ${oPanelWidthList[2] - W / 2}px ${oPanelWidthList[3] - W / 2}px 100px 100px` // 拖拽后物体的宽
                     oDragIcon.style.left = evt.clientX + offsetLeft + 'px'
                     // if (W > 800) {
                     //   W = 800
@@ -198,7 +198,7 @@ export default {
 
                     console.log(oPanelWidthList[0], W, H)
                 }
-                document.onmouseup = function () {
+                document.onmouseup = function() {
                     document.onmousemove = null
                     document.onmouseup = null
                 }

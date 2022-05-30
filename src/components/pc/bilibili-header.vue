@@ -5,7 +5,7 @@
                 ref="back"
                 :class="transition ? 'transitiontrue' : 'transitionfalse'"
                 class="back"
-                src="http://qnimg.zowoyoo.com/img/null/1607501492084.png"
+                src="https://hemingxaun-1256953833.cos.ap-shanghai.myqcloud.com/mingxuan-component/bilibili-header-1.png"
             />
         </div>
         <div class="layer">
@@ -14,21 +14,21 @@
                 ref="person22"
                 :class="transition ? 'transitiontrue' : 'transitionfalse'"
                 class="person22"
-                src="http://qnimg.zowoyoo.com/img/null/1607501542003.png"
+                src="https://hemingxaun-1256953833.cos.ap-shanghai.myqcloud.com/mingxuan-component/bilibili-header-2.png"
             />
             <img
                 v-else-if="persont22 === 2"
                 ref="person22"
                 :class="transition ? 'transitiontrue' : 'transitionfalse'"
                 class="person22"
-                src="http://qnimg.zowoyoo.com/img/null/1607501562527.png"
+                src="https://hemingxaun-1256953833.cos.ap-shanghai.myqcloud.com/mingxuan-component/bilibili-header-3.png"
             />
             <img
                 v-else
                 ref="person22"
                 :class="transition ? 'transitiontrue' : 'transitionfalse'"
                 class="person22"
-                src="http://qnimg.zowoyoo.com/img/null/1607503700517.png"
+                src="https://hemingxaun-1256953833.cos.ap-shanghai.myqcloud.com/mingxuan-component/bilibili-header-4.png"
             />
         </div>
         <div class="layer">
@@ -36,7 +36,7 @@
                 ref="hill"
                 :class="transition ? 'transitiontrue' : 'transitionfalse'"
                 class="hill"
-                src="http://qnimg.zowoyoo.com/img/null/1607501848095.png"
+                src="https://hemingxaun-1256953833.cos.ap-shanghai.myqcloud.com/mingxuan-component/bilibili-header-5.png"
             />
         </div>
         <div class="layer">
@@ -44,7 +44,7 @@
                 ref="leaves"
                 :class="transition ? 'transitiontrue' : 'transitionfalse'"
                 class="leaves"
-                src="http://qnimg.zowoyoo.com/img/null/1607501868946.png"
+                src="https://hemingxaun-1256953833.cos.ap-shanghai.myqcloud.com/mingxuan-component/bilibili-header-6.png"
             />
         </div>
         <div class="layer">
@@ -52,7 +52,7 @@
                 ref="person33"
                 :class="transition ? 'transitiontrue' : 'transitionfalse'"
                 class="person33"
-                src="http://qnimg.zowoyoo.com/img/null/1607501903187.png"
+                src="https://hemingxaun-1256953833.cos.ap-shanghai.myqcloud.com/mingxuan-component/bilibili-header-7.png"
             />
         </div>
         <div class="layer">
@@ -60,7 +60,7 @@
                 ref="left"
                 :class="transition ? 'transitiontrue' : 'transitionfalse'"
                 class="left"
-                src="http://qnimg.zowoyoo.com/img/null/1607501927925.png"
+                src="https://hemingxaun-1256953833.cos.ap-shanghai.myqcloud.com/mingxuan-component/bilibili-header-8.png"
             />
         </div>
     </div>

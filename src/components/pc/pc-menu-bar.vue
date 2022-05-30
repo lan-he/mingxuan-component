@@ -30,7 +30,6 @@ export default {
     },
     methods: {
         onRouterPush(item) {
-            console.log('sss')
             if (this.$route.path == item.path) return
             this.$router.replace(item.path)
         },
@@ -40,11 +39,11 @@ export default {
 <style lang="less" scoped>
 .pc-menu-bar {
     width: 230px;
-
     box-sizing: border-box;
     background-color: #fff;
     border-right: 1px solid rgba(0, 0, 0, 0.06);
-    margin-top: 40px;
+    padding-top: 40px;
+    box-sizing: border-box;
     .pc-menu-item {
         width: 100%;
         height: 40px;
@@ -53,9 +52,25 @@ export default {
         opacity: 0.67;
         padding-left: 40px;
         box-sizing: border-box;
+        position: relative;
+        cursor: pointer;
+        transition: 0.3s;
+        &:hover {
+            color: #1890ff;
+        }
     }
     .active {
-        background: #1890ff;
+        background: #e6f7ff;
+        color: #1890ff;
+        &::after {
+            width: 3px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-right: 3px solid #1890ff;
+            content: '';
+        }
     }
 }
 </style>

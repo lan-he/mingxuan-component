@@ -10,27 +10,40 @@
         <div class="header-box-block">
             <div
                 class="navigation-bar"
-                :class="{ active: $route.path == '/mobile-menu' }"
+                :class="{ active: matchedPath == '/mobile' }"
                 @click="onRouterPush('/mobile-menu')"
             >
                 Mobile
             </div>
-            <div class="navigation-bar" :class="{ active: $route.path == '/pc' }" @click="onRouterPush('/pc')">Pc</div>
+            <div class="navigation-bar" :class="{ active: matchedPath == '/pc' }" @click="onRouterPush('/pc')">
+                Pc
+            </div>
         </div>
-        <a target="_blank" href="https://github.com/mingxuann/mingxuan-component">
-            <i class="iconfont icon-github"></i>
-        </a>
+        <div class="github-right">
+            <a target="_blank" href="https://github.com/mingxuann/mingxuan-component">
+                <i class="iconfont icon-github"></i>
+            </a>
+        </div>
     </header>
 </template>
 <script>
 export default {
     name: 'menus',
     data() {
-        return {}
+        return {
+            matchedPath: '/mobile',
+        }
+    },
+    mounted() {},
+    watch: {
+        $route: function(val) {
+            this.matchedPath = val.matched[0].path
+        },
     },
     methods: {
         onRouterPush(item) {
             if (this.$route.path == item) return
+            console.log(this.$route)
             this.$router.replace(item)
         },
     },
@@ -96,9 +109,14 @@ export default {
             }
         }
     }
-    .icon-github {
-        font-size: 22px;
-        margin-left: 12px;
+    .github-right {
+        width: 300px;
+        display: flex;
+        justify-content: flex-end;
+        .icon-github {
+            font-size: 22px;
+            margin-left: 12px;
+        }
     }
     .logo {
         width: 100px;

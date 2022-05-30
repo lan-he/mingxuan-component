@@ -11,6 +11,9 @@ export default {
     components: {
         bilibiliHeader,
     },
+    mounted() {
+        console.log(this.$route)
+    },
 }
 </script>
 

@@ -29,7 +29,7 @@ export default {
                     path: '/calendar',
                 },
                 {
-                    name: 'Calendar 日历选择',
+                    name: 'Calendar 日历选择(张思远)',
                     path: '/calendar-multiple',
                 },
             ],

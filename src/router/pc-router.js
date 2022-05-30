@@ -3,6 +3,7 @@ export default [
         path: '/pc',
         name: 'pc',
         component: () => import('@/views/pc/index.vue'),
+        redirect: '/bilibili-header',
         children: [
             {
                 path: '/bilibili-header',
