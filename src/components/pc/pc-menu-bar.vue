@@ -18,12 +18,28 @@ export default {
         return {
             menuList: [
                 {
-                    name: 'bilibili头部',
+                    name: 'pinkman(unity自制游戏)',
+                    path: '/pinkman-game',
+                },
+                {
+                    name: 'bilibili头部深景效果',
                     path: '/bilibili-header',
                 },
                 {
                     name: '拼图工具',
                     path: '/puzzle-tool',
+                },
+                {
+                    name: '404夜空',
+                    path: '/not-found-purple',
+                },
+                {
+                    name: '404雪天',
+                    path: '/not-found-snowy',
+                },
+                {
+                    name: '404沙漠',
+                    path: '/not-found-desert',
                 },
             ],
         }

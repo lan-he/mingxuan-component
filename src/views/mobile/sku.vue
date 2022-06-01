@@ -289,7 +289,7 @@ export default {
     },
 }
 </script>
-<style>
+<style　scoped>
 .spu-selectbox {
     padding: 10px;
     color: #333;

@@ -22,6 +22,8 @@ export default {
     flex: 1;
     .router-view {
         flex: 1;
+        overflow: hidden;
+        position: relative;
     }
 }
 </style>
