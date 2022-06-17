@@ -1,8 +1,6 @@
 @font-face {
   font-family: "iconfont"; /* Project id 1921710 */
-  src: url('iconfont.woff2?t=1653839682713') format('woff2'),
-       url('iconfont.woff?t=1653839682713') format('woff'),
-       url('iconfont.ttf?t=1653839682713') format('truetype');
+  src: url('iconfont.woff2?t=1655448388629') format('woff2');
 }
 
 .iconfont {
@@ -11,6 +9,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-kaola:before {
+  content: "\e620";
 }
 
 .icon-food-strawberry:before {

@@ -39,6 +39,11 @@ export default [
                 name: 'calendar-multiple',
                 component: () => import('@/views/mobile/calendar-multiple.vue'),
             },
+            {
+                path: '/swiper',
+                name: 'swiper',
+                component: () => import('@/views/mobile/swiper.vue'),
+            },
         ],
     },
 ]

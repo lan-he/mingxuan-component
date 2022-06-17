@@ -32,6 +32,10 @@ export default {
                     name: 'Calendar 日历选择(张思远)',
                     path: '/calendar-multiple',
                 },
+                {
+                    name: 'Swiper示例',
+                    path: '/swiper',
+                },
             ],
         }
     },

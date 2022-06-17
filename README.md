@@ -13,6 +13,7 @@
 
 vue 版本`2.6.14`  
 访问链接: https://mingxuann.github.io/mingxuan-component/
+国内地址: https://mingxuann.gitee.io/mingxuan-component/
 
 ## 功能介绍
 
