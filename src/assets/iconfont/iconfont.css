@@ -1,6 +1,6 @@
 @font-face {
   font-family: "iconfont"; /* Project id 1921710 */
-  src: url('iconfont.woff2?t=1655448388629') format('woff2');
+  src: url('iconfont.woff2?t=1655704965112') format('woff2');
 }
 
 .iconfont {
@@ -9,6 +9,10 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-deleteicon:before {
+  content: "\e625";
 }
 
 .icon-kaola:before {

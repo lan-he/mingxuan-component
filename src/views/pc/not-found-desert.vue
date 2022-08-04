@@ -8,7 +8,7 @@
         <div id="js-hills" class="background hills"></div>
         <div id="js-country" class="background country"></div>
         <div id="js-foreground" class="background foreground"></div>
-        <div class="error-content">对不起，这个页面去404沙漠旅行还没有回来.</div>
+        <div class="error-content">对不起，这个页面去404沙漠旅行还没有回来</div>
         <a href="/" class="button-home">返回</a>
         <div class="code">
             <span>4</span>

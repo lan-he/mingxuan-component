@@ -44,6 +44,11 @@ export default [
                 name: 'swiper',
                 component: () => import('@/views/mobile/swiper.vue'),
             },
+            {
+                path: '/key-board',
+                name: 'key-board',
+                component: () => import('@/views/mobile/key-board.vue'),
+            },
         ],
     },
 ]

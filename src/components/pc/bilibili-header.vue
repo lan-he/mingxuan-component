@@ -161,8 +161,6 @@ export default {
     position: relative;
     z-index: 0;
     min-height: 155px;
-    height: 9.375vw;
-    min-width: 999px;
     width: 100%;
     background-color: #f9f9f9;
     display: flex;

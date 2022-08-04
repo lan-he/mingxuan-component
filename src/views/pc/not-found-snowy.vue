@@ -3,11 +3,12 @@
         <canvas class="snow" ref="snow" id="snow" width="1920" height="917"></canvas>
         <div class="main-text">
             <h1>
-                天啊。
-                <br />页面在雪地里失踪了。
+                天啊！
+                <br />页面在雪地里失踪了
             </h1>
             <div class="main-text-a">
-                <a href="https://404.life/">&lt; 返回首页</a>
+                <!-- <a href="https://404.life/">&lt; 返回首页</a> -->
+                <a href="">&lt; 返回首页</a>
             </div>
         </div>
         <div class="ground">

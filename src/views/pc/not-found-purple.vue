@@ -137,10 +137,8 @@
                     </div>
                     <div class="number">4</div>
                 </div>
-                <div class="subtitle">哎呀。看来你拐错弯了。</div>
-                <a href="https://404.life/">
-                    <button>返回</button>
-                </a>
+                <div class="subtitle">哎呀，看来你拐错弯了</div>
+                <button>返回</button>
             </div>
         </div>
     </div>
