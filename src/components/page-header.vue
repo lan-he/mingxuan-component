@@ -4,7 +4,7 @@
             <svg class="icon logo-svg" aria-hidden="true">
                 <use xlink:href="#icon-food-strawberry"></use>
             </svg>
-            <span class="logo-title">He Mingxuan</span>
+            <span class="logo-title">He Mingxuann</span>
             <i class="logo-line"></i>
         </div>
         <div class="header-box-block">
@@ -15,9 +15,7 @@
             >
                 Mobile
             </div>
-            <div class="navigation-bar" :class="{ active: matchedPath == '/pc' }" @click="onRouterPush('/pc')">
-                Pc
-            </div>
+            <div class="navigation-bar" :class="{ active: matchedPath == '/pc' }" @click="onRouterPush('/pc')">Pc</div>
         </div>
         <div class="github-right">
             <a target="_blank" href="https://github.com/mingxuann/mingxuan-component">
@@ -36,7 +34,7 @@ export default {
     },
     mounted() {},
     watch: {
-        $route: function(val) {
+        $route: function (val) {
             this.matchedPath = val.matched[0].path
         },
     },
