@@ -236,6 +236,8 @@ export default {
 .mound_text {
     -webkit-transform: rotate(6deg);
     transform: rotate(6deg);
+    position: relative;
+    top: -20px;
 }
 
 .mound_spade {

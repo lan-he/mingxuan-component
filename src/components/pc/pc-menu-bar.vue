@@ -81,7 +81,7 @@ export default {
         transition: all 0.15s;
         position: absolute;
         right: -18px;
-        top: 50%;
+        top: 42%;
         transform: translateY(-50%);
         border-radius: 50%;
         background-color: #fff;
@@ -90,11 +90,10 @@ export default {
         align-items: center;
         cursor: pointer;
         transition: 0.3s;
+        z-index: 1;
         &:hover {
             background-color: rgb(242, 242, 242);
-            i {
-                color: #000;
-            }
+            color: #000;
         }
         i {
             color: rgb(51, 54, 57);
