@@ -12,8 +12,8 @@
 ## Vue2 最终版本组件合集 欢迎 star
 
 vue 版本`2.6.14`  
-访问链接: https://mingxuann.github.io/mingxuan-component/  
-国内地址: https://mingxuann.gitee.io/mingxuan-component/
+访问链接: https://hemingxuann.github.io/mingxuan-component/  
+国内地址: https://hemingxuann.gitee.io/mingxuan-component/
 
 ## 功能介绍
 
