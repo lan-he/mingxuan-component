@@ -1,6 +1,6 @@
 <template>
     <div class="pinkman">
-        <iframe class="iframe" src="https://mingxuann.github.io/pinkman-2d-unity/" frameborder="0"></iframe>
+        <iframe class="iframe" src="https://hemingxuann.github.io/pinkman-2d-unity/" frameborder="0"></iframe>
     </div>
 </template>
 <script>
