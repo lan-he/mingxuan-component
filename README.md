@@ -9,11 +9,15 @@
   <a href="https://chat.vuejs.org/"><img src="https://img.shields.io/badge/chat-on%20discord-7289da.svg?sanitize=true" alt="Chat"></a>
 </p>
 
-## Vue2 最终版本组件合集 欢迎 star
+## Vue2 组件合集 欢迎 star
 
-vue 版本`2.6.14`  
-访问链接: https://hemingxuann.github.io/mingxuan-component/  
-国内地址: https://hemingxuann.gitee.io/mingxuan-component/
+vue 版本`2.6.14`
+
+## 在线访问
+
+访问链接: [https://lan-he.github.io/mingxuan-component/](https://lan-he.github.io/mingxuan-component/)
+
+![example](public/example.png)
 
 ## 功能介绍
 
